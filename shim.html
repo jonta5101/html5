@@ -1,0 +1,37 @@
+<!--
+	Shim - aka Shiv.  Allowing older browsers (IE) to recognize HTML5
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>HTML5 Shim (Shiv)</title>
+	<meta charset="utf-8">
+<!--
+	you can use the createElemet to allow IE to style that tag
+	<script>
+		document.createElement("article");
+	</script>
+-->
+<!--
+	a second way is to call this script
+-->
+	<!--[if lt IE 9]>
+		<script src=http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<style>
+		article {
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+
+	<article>
+		<h1>My Blog Post</h1>
+		<p>some line of text goes here</p>
+	</article>
+
+</body>
+</html>
