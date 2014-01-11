@@ -1,0 +1,34 @@
+<!--
+	placeholder - shows text in an input box
+
+	required - input must contain a value before submission allowed
+
+	pattern - use a regular expression to validate input (see url_and_phone_inputs.html)
+
+	acutally a very long list of attributes.  see http://www.wufoo.com/html5/ for more information (expecially on which browsers support which attributes)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>New Form Attributes</title>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+		<script src=http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+	</style>
+</head>
+
+<body>
+
+	<h1>New Form Attributes</h1>
+	placeholder - <input placeholder="my text here">
+	<p>
+	required - <input placeholder="my text here" required>
+	<p>
+	pattern - <input type="number" placeholder="enter a number from 1 to 999" pattern="\d{1,3}" required>
+	<p>
+
+	<input type="submit">
+</body>
+</html>
