@@ -1,0 +1,62 @@
+<!--
+	range - gives the user a slider	
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>range inputs</title>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+		<script src=http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+		* {margin: 0;
+		padding: 0;}
+		dt {float: left;
+			padding-right: 20px;
+			clear: both;}
+			dd {margin-bottom: 10px;}
+	</style>
+	<script>
+		;(function(){
+			var heading;
+			var r, g, b;
+
+			function supportRange(){
+				var i = document.createElement('input');
+				i.setAttribute('type','range');
+				return i.type==='range';
+			}
+
+			if ( supportRange ){
+				heading = document.querySelector('h1');
+				r = document.querySelector('#r');
+				g = document.querySelector('#g');
+				b = document.querySelector('#b');
+
+				document.body.addEventListener('change', function(){
+					heading.style.color = 'rgb(' + [r.value, g.value, b.value].join(',') + ')';
+				}, false);
+			}
+
+		})();
+	</script>
+</head>
+
+<body>
+
+	<h1>Range Inputs</h1>
+	<dl>
+		<dt>Red</dt>
+		<dd><input id="r" name="r" type="range" min="0" max="255"></dd>
+		<dt>Green</dt>
+		<dd><input id="g" name="g" type="range" min="0" max="255"></dd>
+		<dt>Blue</dt>
+		<dd><input id="b" name="b" type="range" min="0" max="255"></dd>
+	</dl>
+
+	<p>
+	<h2>This page rocks!</h2>
+
+</body>
+</html>
