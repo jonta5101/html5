@@ -1,0 +1,38 @@
+<!--
+	url - another tag to allow browser validation, validation is not very good (letter:letter passes!)
+	tel - allows you to set up a pattern to match against.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>URL and Phone inputs</title>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+		<script src=http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style>
+	</style>
+</head>
+
+<body>
+
+	<h1>URL and Phone inputs</h1>
+	<input type="url">
+	<p>
+	<!-- 
+	this pattern ==> 555-555-5555
+	-->
+	phone number: <input type="tel" pattern="\d{3}-\d{3}-\d{4}">
+	<!-- 
+	this pattern ==> 5555555555
+	-->
+	phone number: <input type="tel" pattern="\d{3}-?\d{3}-?\d{4}">
+	<!-- 
+	this pattern ==> 1-555-555-5555
+	-->
+	phone number: <input type="tel" pattern="(\d-)?\d{3}-\d{3}-\d{4}">
+
+	<input type="submit">
+
+</body>
+</html>
