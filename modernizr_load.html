@@ -1,0 +1,43 @@
+<!--
+	an exmple of testing to see if an HTML5 tag is supported, and what to do about it when the tag is not supported.
+-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<title>LocalStorage test</title>
+	<meta charset="utf-8">
+	<style>
+	</style>
+	<!--
+	source in modernizr here.  Modernizr gives an easy way to test the browser to see what HTML5 and CSS3 features are available.
+	-->
+
+	<!-- developer edition of moderniz -->
+	<!--
+	<script src="modernizr-latest.js"></script>
+	-->	
+	<!-- custom edition of moderniz -->
+	<script src="modernizr-custom.js"></script>
+</head>
+
+<body>
+
+	<h1>LocalStorage Test</h1>
+
+	<!-- 
+		test for localstorage, yep -> no yep here because HTML5 supports it, nope -> load our polyfil.js to support localstorage in this browser.  This is better than just loading the script, less to send to the browser, faster loading pages.
+	
+		NOTE: these files are loaded asyncrnously...so you can not assume the files are present as they might not have loaded yet.  Use the COMPLETE option which tells it to run your functon after the scripts have loaded.
+	-->
+	<script>
+		Modernizr.load({
+			test: Modernizr.localstorage,
+			nope: 'localstorage.js',
+			complete: function() {
+				alert('in here');
+			}
+		});
+	</script>
+
+</body>
+</html>
