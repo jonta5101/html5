@@ -1,0 +1,89 @@
+<!--
+	history_example - an example of using the history stack.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>History Pop</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1>History Pop</h1>
+
+	<ul>
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1100_html5History/html5.jpg" title="HTML5 Rocks">HTML5</a></li>
+
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1101_wpPlugins/wpplugincourse.png" title="WordPress">WordPress</a></li>
+
+		<li> <a href="http://tutsplus.s3.amazonaws.com/bestof/bestoftuts.jpg" title="Tuts+">Tuts+</a></li>
+
+	</ul>
+
+	<div class="result">
+		<script id="template" type="template">
+			<h2>{{title}}</h2>
+			<img src="{{imgSrc}}" alt="{{title}}">
+		</script>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+	<script>
+		;(function() {
+			var Viewer = {
+				// get a reference to the template
+				template: $('#template').html(),
+
+				// attach an evnetListener to the links being clicked
+				init: function() {
+					$('ul').on('click', 'a', function(e) {
+						Viewer.applyTemplate(this);
+						// stop the <a> tag from loading the images
+						e.preventDefault();
+					})
+				},
+
+				// display the image in our template
+				applyTemplate: function(data) {
+
+				// get the template
+				// use a regular expression to replace all template {{title}} with the title from the <a> tag.
+				// use a regular expression to replace all template {{imgSrc}} with the href from the <a> tag.
+					var template = 
+						this.template.replace(/{{title}}/g, data.title )
+									 .replace(/{{imgSrc}}/g, data.href );
+						
+						// get the result div
+						// remove any children (the end tells it we are done with the children, return to the result div)
+						// applend our template
+						$('.result')
+							.children()
+								.remove()
+								.end()
+							.append(template);
+
+						return this;
+				}
+			};
+
+			Viewer.init();
+		})();
+	</script>
+
+
+	<script>
+//	push something onto the history stack.
+		// history.pushState(
+		// 	//data, title, url
+		// 	'data', 'title', 'url'
+		// );
+
+		// // gives a hook to the popstate
+		// window.addEventListener('popstate', function(e){
+		// 	console.log(e);
+		// });
+
+	</script>
+</body>
+</html>
