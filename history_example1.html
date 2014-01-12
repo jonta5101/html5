@@ -12,11 +12,11 @@
 	<h1>History Pop</h1>
 
 	<ul>
-		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1100_html5History/html5.jpg" title="HTML5 Rocks">HTML5</a></li>
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1100_html5History/html5.jpg" title="HTML5 Rocks" data-url="html5">HTML5</a></li>
 
-		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1101_wpPlugins/wpplugincourse.png" title="WordPress">WordPress</a></li>
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1101_wpPlugins/wpplugincourse.png" title="WordPress" data-url="wp">WordPress</a></li>
 
-		<li> <a href="http://tutsplus.s3.amazonaws.com/bestof/bestoftuts.jpg" title="Tuts+">Tuts+</a></li>
+		<li> <a href="http://tutsplus.s3.amazonaws.com/bestof/bestoftuts.jpg" title="Tuts+" data-url="tuts">Tuts+</a></li>
 
 	</ul>
 
@@ -39,6 +39,7 @@
 				init: function() {
 					$('ul').on('click', 'a', function(e) {
 						Viewer.applyTemplate(this);
+						Viewer.updateHistory(this);
 						// stop the <a> tag from loading the images
 						e.preventDefault();
 					})
@@ -64,6 +65,21 @@
 							.append(template);
 
 						return this;
+				},
+
+				//
+				updateHistory: function(data) {
+					// set up some data to push to History
+					var dataToPush = {
+						title: data.title,
+						href: data.href,
+						url: data.dataset.url
+					}
+
+					history.pushState(
+					// 	//data, title, url
+						dataToPush, data.title, data.dataset.url
+					);
 				}
 			};
 
@@ -74,10 +90,6 @@
 
 	<script>
 //	push something onto the history stack.
-		// history.pushState(
-		// 	//data, title, url
-		// 	'data', 'title', 'url'
-		// );
 
 		// // gives a hook to the popstate
 		// window.addEventListener('popstate', function(e){
