@@ -1,0 +1,37 @@
+<!--
+	history_pop - pop user activity from the history stack.  this allows us to retrieve something they have done in order to revert back to it.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>History Pop</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<h1>History Pop</h1>
+
+	<ul>
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1100_html5History/html5.jpg" title="HTML5 Rocks">HTML5</a></li>
+
+		<li> <a href="http://d2o0t5hpnwv4c1.cloudfront.net/1101_wpPlugins/wpplugincourse.png" title="WordPress">WordPress</a></li>
+
+		<li> <a href="http://tutsplus.s3.amazonaws.com/bestof/bestoftuts.jpg" title="Tuts+">Tuts+</a></li>
+
+	</ul>
+
+	<script>
+//	push something onto the history stack.
+		history.pushState(
+			//data, title, url
+			'data', 'title', 'url'
+		);
+
+		// gives a hook to the popstate
+		window.addEventListener('popstate', function(e){
+			console.log(e);
+		});
+
+	</script>
+</body>
+</html>
